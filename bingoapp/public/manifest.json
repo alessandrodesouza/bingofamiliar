@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Bingo Familiar",
+  "name": "Jogo de Bingo para Família",
   "icons": [
     {
       "src": "favicon.ico",
