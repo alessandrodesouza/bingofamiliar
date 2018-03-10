@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+
+  bingotest:
+    container_name: bingotest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '/c/Users/Aless/Google Drive/Projetos/BingoFamiliar/bingoapp:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    environment:
+      - NODE_ENV=test
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true  
+    command: /bin/bash

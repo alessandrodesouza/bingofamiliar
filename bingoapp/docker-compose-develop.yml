@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+
+  bingoapp:
+    container_name: bingoapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '/c/Users/Aless/Google Drive/Projetos/BingoFamiliar/bingoapp:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
