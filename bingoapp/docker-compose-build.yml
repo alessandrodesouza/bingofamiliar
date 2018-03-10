@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+
+  bingobuild:
+    container_name: bingobuild
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '/c/Users/Aless/Google Drive/Projetos/BingoFamiliar/bingoapp:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    environment:
+      - NODE_ENV=build
+      - CHOKIDAR_USEPOLLING=true
+    command: npm run-script build

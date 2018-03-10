@@ -1,0 +1,25 @@
+body {
+  padding-top: 3.5rem;
+}
+
+.principal { 
+  height: 100vh; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 1vw;
+  padding-top: 2vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+.zIndex-2 {
+  position: relative;
+  z-index: 2;
+}
+
+.lineHeight-2 {
+  line-height: 2;
+}
