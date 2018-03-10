@@ -12,7 +12,7 @@ export default () =>
           <div className="col-9">
             <h2>
               <img src="../images/bingoFamiliar.jpg" className="rounded" alt="bingo" height="220" width="250"/>&nbsp;
-              BINGO FAMILIAR - <strong>SouZagato</strong>
+              B.I.N.G.O  F.A.M.I.L.I.A.R - <strong>SouZagato!!!</strong>
             </h2>
           </div>
 
@@ -24,10 +24,11 @@ export default () =>
               <div className="card-header">SORTEIO</div>
               <div className="card-body">
                 <h5 className="card-title">Último sorteado</h5>
-                <p className="card-text text-success"><h1><marquee>99</marquee></h1></p>
+                <p className="card-text text-success"><h1 class="animated infinite flash">99</h1></p>
               </div>
             </div>
           </div>
+
         </div>        
       </div>
     </div>
@@ -36,7 +37,7 @@ export default () =>
       <h2>Números sorteados:</h2>
     </div>
 
-    <div className="text-success text-center">
+    <div className="text-success text-center animated zoomIn">
       <h1>
         01 &nbsp;
         01 &nbsp;
