@@ -1,103 +1,43 @@
-import React from "react";
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
-export default (props) =>
-  <div>
-    <div class="alert alert-success" role="alert">
-      <h2>Números sorteados:</h2>
-    </div>
+class Sorteados extends Component {
 
-    <div className="text-success text-center animated zoomIn">
-      <h1>
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-        01 &nbsp;
-      </h1>
-    </div>
-  </div>
+  constructor(props) {
+    super(props);
+
+    this.min = 1;
+    this.max = 90;
+
+  }
+
+  renderizarNumeros = () => {
+    let numeros = [];
+
+    for (let n = this.min; n <= this.max; n++) {
+      numeros.push(
+        <span key={n.toString()} className={(this.props.numerosSorteados.indexOf(n) >= 0 ? "text-success" : "text-muted")}>
+        (n.toString().length === 1 ? "0" : "") + n.toString() &nbsp;
+        </span>
+      );
+    }
+
+    return numeros;
+  }
+
+  render = () => {
+    return (
+      <div>
+        <h1>
+          {this.renderizarNumeros()}
+        </h1>
+      </div>
+    );
+  }
+}
+
+Sorteados.propTypes = {
+  numerosSorteados: PropTypes.array.isRequired
+}
+
+export default Sorteados;

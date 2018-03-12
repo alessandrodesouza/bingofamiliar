@@ -18,5 +18,4 @@ describe('Testes no componente de Sorteio', () => {
 
   });
   
-  
 });

@@ -24,5 +24,5 @@ export default () =>
       </div>
     </div>
 
-    <Sorteados />
+    <Sorteados numeroSorteados={[10,45,89]} />
   </div>
