@@ -44,31 +44,39 @@ class Sorteio extends Component {
     const n = Math.floor(Math.random() * (max - min + 1)) + min;
 
     const bolaSorteada = this.state.bolasNoGlobo[n];
-    const totalSorteados = this.state.totalSorteados + 1;
-    this.setState({ultimoSorteado: bolaSorteada, totalSorteados: totalSorteados});
 
-    this.retirarBolaSorteadaDoGlobo(bolaSorteada);
-    this.guardarNaOrdemDeSorteio(bolaSorteada);
-    this.guardarNaOrdemCrescente(bolaSorteada);
+    this.atualizarState(bolaSorteada);
 
-    this.informarStatusAtual();
+  }
+
+  atualizarState = (bolaSorteada) => {
+    const bolasNoGlobo = this.retirarBolaSorteadaDoGlobo(bolaSorteada);
+    const bolasNaOrdemDeSorteio = this.guardarNaOrdemDeSorteio(bolaSorteada);
+    const bolasNaOrdemCrescente = this.guardarNaOrdemCrescente(bolaSorteada);
+    this.setState({
+      ultimoSorteado: bolaSorteada,
+      totalSorteados: this.state.totalSorteados + 1,
+      bolasNoGlobo: bolasNoGlobo,
+      bolasNaOrdemDeSorteio: bolasNaOrdemDeSorteio,
+      bolasNaOrdemCrescente: bolasNaOrdemCrescente},
+      this.informarStatusAtual);
   }
 
   retirarBolaSorteadaDoGlobo = (bola) => {
     let na = this.state.bolasNoGlobo.filter((value) => value !== bola);
-    this.setState({bolasNoGlobo: na});
+    return na;
   }
 
   guardarNaOrdemDeSorteio = (bola) => {
     let na = this.state.bolasNaOrdemDeSorteio;
     na.push(bola);
-    this.setState({bolasNaOrdemDeSorteio: na});  
+    return na;  
   }
 
   guardarNaOrdemCrescente = (bola) => {
     let na = this.state.bolasNaOrdemCrescente;
     na[bola] = bola;
-    this.setState({bolasNaOrdemCrescente: na});  
+    return na;  
   }
   
   formatarNumeroParaMostrar = (numero) => {
@@ -80,19 +88,15 @@ class Sorteio extends Component {
   }
 
   informarStatusAtual = () => {
-    let informarStatus = this.props.status || null;
-    if (informarStatus) {
-
+    let informarStatus = this.props.statusSorteio || null;
+    if (informarStatus !== null)
       informarStatus({
-        ultimoSorteado: this.formatarNumeroParaMostrar(this.state.ultimoSorteado),
+        ultimoSorteado: this.state.ultimoSorteado,
         totalSorteados: this.state.totalSorteados,
         bolasNoGlobo: this.state.bolasNoGlobo,
         bolasNaOrdemDeSorteio: this.state.bolasNaOrdemDeSorteio,
         bolasNaOrdemCrescente: this.state.bolasNaOrdemCrescente
       });
-
-    }
-
   }
 
   componentDidMount = () => {
@@ -103,7 +107,7 @@ class Sorteio extends Component {
     return (
       <div className="col-3 zIndex-2">
 
-        <button id="sortear" className="btn btn-success">Sortear Próximo &raquo;</button>&nbsp;
+        <button id="sortear" className="btn btn-success" onClick={this.sortearProximo}>Sortear Próximo &raquo;</button>&nbsp;
         <button id="reiniciar" className="btn btn-outline-success">Reiniciar</button>
         <hr/>
 
@@ -111,7 +115,7 @@ class Sorteio extends Component {
           <div className="card-header">SORTEIO</div>
           <div className="card-body">
             <h5 className="card-title">Último sorteado</h5>
-            <p className="card-text text-success"><h1 class="animated infinite flash">{this.formatarNumeroParaMostrar(this.state.ultimoSorteado)}</h1></p>
+            <h1 className="card-text text-success animated infinite flash">{this.formatarNumeroParaMostrar(this.state.ultimoSorteado)}</h1>
           </div>
         </div>
 
@@ -122,7 +126,7 @@ class Sorteio extends Component {
 }
 
 Sorteio.propTypes = {
-  status: PropTypes.func
+  statusSorteio: PropTypes.func
 }
 
 export default Sorteio;

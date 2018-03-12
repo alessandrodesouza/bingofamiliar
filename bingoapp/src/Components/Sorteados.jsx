@@ -15,11 +15,17 @@ class Sorteados extends Component {
     let numeros = [];
 
     for (let n = this.min; n <= this.max; n++) {
-      numeros.push(
-        <span key={n.toString()} className={(this.props.numerosSorteados.indexOf(n) >= 0 ? "text-success" : "text-muted")}>
-        (n.toString().length === 1 ? "0" : "") + n.toString() &nbsp;
-        </span>
-      );
+      if (this.props.numerosSorteados)
+        numeros.push(
+          <span key={n.toString()} className={(this.props.numerosSorteados.indexOf(n) >= 0 ? "text-success" : "text-muted")}>
+          {(n.toString().length === 1 ? "0" : "") + n.toString()} &nbsp;
+          </span>
+        );
+      else
+        numeros.push(
+        <span key={n.toString()} className="text-muted"> {(n.toString().length === 1 ? "0" : "") + n.toString()} &nbsp;</span>
+        );
+
     }
 
     return numeros;
@@ -37,7 +43,7 @@ class Sorteados extends Component {
 }
 
 Sorteados.propTypes = {
-  numerosSorteados: PropTypes.array.isRequired
+  numerosSorteados: PropTypes.array
 }
 
 export default Sorteados;

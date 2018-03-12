@@ -79,7 +79,7 @@ describe('Sortear números entre 1 e 90', () => {
 
     var cb = jest.fn();
 
-    const c = shallow(<Sorteio status={cb}/>);
+    const c = shallow(<Sorteio statusSorteio={cb}/>);
 
     c.instance().sortearProximo();
 
