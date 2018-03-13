@@ -54,7 +54,7 @@ class Bingo extends Component {
         </div>
 
         <Sorteados numerosSorteados={this.state.statusSorteio.bolasNaOrdemDeSorteio} />
-        <div className="text-right small texto-branco">V1.0</div>
+        <div className="text-right small texto-branco">v1.0</div>
       </div>
     );
   }
