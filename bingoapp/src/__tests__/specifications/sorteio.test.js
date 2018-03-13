@@ -101,4 +101,19 @@ describe('Sortear números entre 1 e 90', () => {
 
   });
   
+  it('Após 90 rodadas não é permitido fazer mais sorteios', () => {
+
+    const c = shallow(<Sorteio/>);
+
+    for (let n = 1; n <= 90 ; n++) {
+      c.instance().sortearProximo();
+    }
+    c.instance().sortearProximo();
+    c.instance().sortearProximo();
+    
+    expect(c.instance().state.bolasNoGlobo).toHaveLength(1);
+    expect(c.instance().state.totalSorteados).toBe(90);
+
+  });
+  
 });

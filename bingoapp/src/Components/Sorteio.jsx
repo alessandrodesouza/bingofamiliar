@@ -44,6 +44,9 @@ class Sorteio extends Component {
   
   sortearProximo = () => {
 
+    if (this.state.totalSorteados >= 90)
+      return;
+
     const min = Math.ceil(this.min);
     const max = Math.floor(this.max - this.state.totalSorteados);
     const n = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -111,19 +114,25 @@ class Sorteio extends Component {
   
   render = () => {
     return (
-      <div className="col-3 zIndex-2">
+      <div>
 
-        <button id="sortear" className="btn btn-success" onClick={this.sortearProximo}>Sortear Próximo &raquo;</button>&nbsp;
+        {
+          this.state.totalSorteados < this.max ?
+          <button id="sortear" className="btn btn-success" onClick={this.sortearProximo}>Sortear Próximo &raquo;</button>
+          :null
+        }
+        &nbsp;
         <button id="reiniciar" className="btn btn-outline-success" onClick={this.reiniciarJogo}>Reiniciar</button>
         <hr/>
 
         <div className="card text-white text-center bg-warning mb-3" style={{maxWidth: "18rem"}}>
-          <div className="card-header">SORTEIO</div>
+          <div className="card-header text-success">SORTEIO</div>
           <div className="card-body">
-            <h5 className="card-title">Último sorteado</h5>
+            <h5 className="card-title text-success">Último sorteado</h5>
             <h1 className="card-text text-success animated infinite flash">{this.formatarNumeroParaMostrar(this.state.ultimoSorteado)}</h1>
           </div>
         </div>
+
       </div>
     );
   }

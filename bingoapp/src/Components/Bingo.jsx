@@ -45,14 +45,16 @@ class Bingo extends Component {
                   B.I.N.G.O  F.A.M.I.L.I.A.R - <strong>SouZagato!!!</strong>
                 </h2>
               </div>
-
-              <Sorteio statusSorteio={this.lerStatusSorteio}/>
+              <div className="col-3 zIndex-2">
+                <Sorteio statusSorteio={this.lerStatusSorteio}/>
+              </div>
 
             </div>     
           </div>
         </div>
 
         <Sorteados numerosSorteados={this.state.statusSorteio.bolasNaOrdemDeSorteio} />
+        <div className="text-right small texto-branco">V1.0</div>
       </div>
     );
   }

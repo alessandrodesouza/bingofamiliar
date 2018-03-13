@@ -18,4 +18,19 @@ describe('Testes no componente de Sorteio', () => {
 
   });
   
+  it('Após 90 rodadas o botão para sorteio não deve ser mostrado', () => {
+
+    const c = shallow(<Sorteio/>);
+
+    expect(c.find('#sortear').exists()).toBe(true);
+
+    for (let n = 1; n <= 90 ; n++) {
+      c.instance().sortearProximo();
+    }
+
+    c.update();
+    expect(c.find('#sortear').exists()).toBe(false);
+
+  });
+  
 });
