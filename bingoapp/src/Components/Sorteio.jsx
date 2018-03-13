@@ -18,10 +18,14 @@ class Sorteio extends Component {
     };
   }
 
+  reiniciarJogo = () => {
+    this.carregarBolasNoGlobo();
+  }
+
   carregarBolasNoGlobo = () => {
-    let bolasNoGlobo = [0];
-    let bolasNaOrdemDeSorteio = [0];
-    let bolasNaOrdemCrescente = [0];
+    var bolasNoGlobo = [0];
+    var bolasNaOrdemDeSorteio = [0];
+    var bolasNaOrdemCrescente = [0];
 
     for (let b = this.min; b <= this.max; b++) {
       bolasNoGlobo.push(b);
@@ -32,11 +36,12 @@ class Sorteio extends Component {
       ultimoSorteado: 0,
       totalSorteados: 0,
       bolasNoGlobo: bolasNoGlobo,
-      bolasNaOrderDeSorteio: bolasNaOrdemDeSorteio,
-      bolasNaOrdemCrescente: bolasNaOrdemCrescente
-    });
+      bolasNaOrdemDeSorteio: bolasNaOrdemDeSorteio,
+      bolasNaOrdemCrescente: bolasNaOrdemCrescente},
+      this.informarStatusAtual
+    );
   }
-
+  
   sortearProximo = () => {
 
     const min = Math.ceil(this.min);
@@ -59,7 +64,8 @@ class Sorteio extends Component {
       bolasNoGlobo: bolasNoGlobo,
       bolasNaOrdemDeSorteio: bolasNaOrdemDeSorteio,
       bolasNaOrdemCrescente: bolasNaOrdemCrescente},
-      this.informarStatusAtual);
+      this.informarStatusAtual
+    );
   }
 
   retirarBolaSorteadaDoGlobo = (bola) => {
@@ -108,7 +114,7 @@ class Sorteio extends Component {
       <div className="col-3 zIndex-2">
 
         <button id="sortear" className="btn btn-success" onClick={this.sortearProximo}>Sortear Próximo &raquo;</button>&nbsp;
-        <button id="reiniciar" className="btn btn-outline-success">Reiniciar</button>
+        <button id="reiniciar" className="btn btn-outline-success" onClick={this.reiniciarJogo}>Reiniciar</button>
         <hr/>
 
         <div className="card text-white text-center bg-warning mb-3" style={{maxWidth: "18rem"}}>
@@ -118,7 +124,6 @@ class Sorteio extends Component {
             <h1 className="card-text text-success animated infinite flash">{this.formatarNumeroParaMostrar(this.state.ultimoSorteado)}</h1>
           </div>
         </div>
-
       </div>
     );
   }

@@ -18,13 +18,29 @@ describe('Controle do Bingo', () => {
 
     const c = mount(<Bingo/>);
     const numeroSorteados = c.find('.text-success').length;
-    const numerosNaoSorteados = c.find('.text-muted').length;
+    const numerosNaoSorteados = c.find('.texto-branco').length;
 
     c.find('#sortear').simulate('click');
 
     expect(c.find('.text-success').length).toBe(numeroSorteados + 1);
-    expect(c.find('.text-muted').length).toBe(numerosNaoSorteados - 1);
+    expect(c.find('.texto-branco').length).toBe(numerosNaoSorteados - 1);
 
   });
-  
+
+  it('Quando reiniciado os sorteios deve-se renderizar a tela para novo início', () => {
+
+    const c = mount(<Bingo/>);
+    const numeroSorteados = c.find('.text-success').length;
+    const numerosNaoSorteados = c.find('.texto-branco').length;
+
+    c.find('#sortear').simulate('click');
+    expect(c.find('.text-success').length).toBe(numeroSorteados + 1);
+    expect(c.find('.texto-branco').length).toBe(numerosNaoSorteados - 1);
+
+    c.find('#reiniciar').simulate('click')
+    expect(c.find('.text-success').length).toBe(numeroSorteados);
+    expect(c.find('.texto-branco').length).toBe(numerosNaoSorteados);
+
+  });
+ 
 });

@@ -86,5 +86,19 @@ describe('Sortear números entre 1 e 90', () => {
     expect(cb).toBeCalled();
 
   });
+
+  it('O componente Sorteio deve reiniciar o jogo quando solicitado', () => {
+
+    const c = shallow(<Sorteio/>);
+
+    c.instance().sortearProximo();
+    expect(c.instance().state.totalSorteados).toBe(1);
+    expect(c.instance().state.bolasNaOrdemDeSorteio).toHaveLength(2);
+
+    c.instance().reiniciarJogo();
+    expect(c.instance().state.totalSorteados).toBe(0);
+    expect(c.instance().state.bolasNaOrdemDeSorteio).toHaveLength(1);
+
+  });
   
 });

@@ -11,7 +11,7 @@ describe('Testes no componente de Sorteados', () => {
     const c = shallow(<Sorteados numerosSorteados={numerosSorteados} />);
 
     expect(c.find('.text-success').length).toBe(3);
-    expect(c.find('.text-muted').length).toBe(87);
+    expect(c.find('.texto-branco').length).toBe(87);
     
 
   });
