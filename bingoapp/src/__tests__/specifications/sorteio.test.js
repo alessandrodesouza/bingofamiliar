@@ -72,11 +72,6 @@ describe('Sortear números entre 1 e 90', () => {
 
   it('O componente Sorteio deve informar o status atual para componentes externos', () => {
 
-    var guardarNaOrdemCrescente = [];
-    for (let n = 0; n <= 90; n++) {
-      guardarNaOrdemCrescente.push(0);
-    }
-
     var cb = jest.fn();
 
     const c = shallow(<Sorteio statusSorteio={cb}/>);
